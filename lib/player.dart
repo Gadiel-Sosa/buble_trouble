@@ -11,7 +11,12 @@ class MyPlayer extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          color: Colors.deepPurple,
+          decoration: BoxDecoration(
+              color: Colors.deepPurpleAccent,
+              border: Border.all(
+                color: Colors.deepPurple,
+                width: 3.0,
+              )),
           height: 50,
           width: 50,
         ),

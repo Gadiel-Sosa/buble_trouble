@@ -32,8 +32,8 @@ class _HomePageState extends State<HomePage> {
   void startGame() {
     double time = 0;
     double height = 0;
-    double velocity = 60; // how string is
-    Timer.periodic(Duration(microseconds: 10), (timer) {
+    double velocity = 80; // how string is
+    Timer.periodic(Duration(milliseconds: 5), (timer) {
       height = -5 * time * time + velocity * time;
       //if the ball reaches the ground, reset the jump
 
@@ -213,35 +213,65 @@ class _HomePageState extends State<HomePage> {
       },
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: AnimatedContainer(
-              duration: Duration(
-                  milliseconds: 300), // Animación cuando cambia el puntaje
-              curve: Curves.easeInOut,
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.star,
-                      color: Colors.yellow[700], size: 35), // Icono amarillo
-                  SizedBox(width: 10),
-                  Text(
-                    "Puntos: $score",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white, // Texto blanco sin fondo negro
-                      fontFamily: 'Arial',
-                      shadows: [
-                        Shadow(
-                            color: Colors.purple,
-                            offset: Offset(2, 2),
-                            blurRadius: 3),
-                      ],
+          Container(
+            color: Colors.purple[300],
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 5),
+              child: AnimatedContainer(
+                duration: Duration(
+                    milliseconds: 300), // Animación cuando cambia el puntaje
+                curve: Curves.easeInOut,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.black,
+                        size: 30,
+                      ),
                     ),
-                  ),
-                ],
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Icon(
+                        Icons.menu,
+                        color: Colors.black,
+                        size: 30,
+                      ),
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.yellow[700],
+                            size: 35,
+                          ), // Icono amarillo
+                          SizedBox(width: 10),
+                          Text(
+                            "Puntos: $score",
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  Colors.white, // Texto blanco sin fondo negro
+                              fontFamily: 'Arial',
+                              shadows: [
+                                Shadow(
+                                    color: Colors.black,
+                                    offset: Offset(2, 2),
+                                    blurRadius: 3),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
